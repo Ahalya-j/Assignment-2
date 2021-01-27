@@ -1,0 +1,197 @@
+<apex:page showHeader="false" sidebar="false" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false"   >
+   <head>
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 14px;
+                position: relative;
+            }
+            
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                margin: 0;
+            }
+            
+            h1 {
+                font-size: 23px;
+            }
+            
+            h2 {
+                font-size: 16px;
+            }
+            
+            h3 {
+                font-size: 14px;
+            }
+            
+            p,
+            td {
+                font-size: 12px;
+            }
+            
+           
+             .invoice__header {
+                display: inline-block;
+                width: 100%;
+                margin: 0px 0 10px 0;
+            }
+            
+            .invoice__logo {
+                width: 300px;
+            }
+            
+            .invoice__title {
+                float: left;
+                width: 80%;
+            }
+            
+            
+            .invoice__address h3 {
+                margin-bottom: 5px;
+            }
+            
+            .invoice__memo,
+            .invoice__oli {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                float: left;
+                width: 100%;
+            }
+            
+            .invoice__memo {
+                width: 50%;
+            }
+            
+            .memo__header,
+            .oli__header {
+                padding: 10px 15px;
+                border-bottom: 1px solid #ddd;
+                border-top-right-radius: 3px;
+                border-top-left-radius: 3px;
+                background-color: #f2f8fc;
+                border-color: #ddd;
+            }
+            
+           
+            table {
+                padding: 10px 15px;
+                width: 100%;
+            }
+            
+            .oli__footer {
+                border-top: 1px solid #ddd;
+                background-color: #f2f8fc;
+            }
+            
+            .oli_footer table td {
+                font-size: 20px;
+            }
+            
+            .text-right {
+                text-align: right;
+            }
+            
+            .text-center {
+                text-align: center;
+            }
+            
+            .invoice__footer {
+                width: 100%;
+                float: left;
+            }
+            
+            .invoice__footer img {
+                width: 100%;
+            }
+        </style>
+    </head>
+     <div class="thick-line text-right">
+         <h5>#000675</h5>
+         </div>
+    <div class="invoice__logo">
+            <apex:image url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHw3mZAR26BuMoh9DgJEvaqASk2tO1VDd92w&usqp=CAU" width="66" height="66" />
+        </div>
+    
+    <center> <h1> INVOICE FOR DELIVERY ! </h1></center>
+     
+   <br></br><br></br>
+    <div class="slds-m-top_medium slds-m-bottom_x-small">
+        <h2 class="slds-text-heading_small slds-m-bottom_small">
+        Product Summary </h2></div>
+    <table  cellpadding="17" cellspacing="17">
+       
+        <tr><td><strong>Product Name</strong></td><td><strong>Quantity</strong> </td><td><strong>Unit Prize</strong> </td><td><strong>Total Prize</strong> </td><td><strong>Discount </strong></td></tr>
+        <tr> <td>SLA: Gold</td><td>2 </td><td>15000 </td> <td>30000 </td><td>20% </td></tr>
+        <tr> <td>SLA: Bronze</td><td>3 </td><td>10000 </td> <td>20000 </td><td>15%</td></tr>  
+        
+      </table>
+<br></br><br></br>
+   
+ <div class="invoice__oli">
+
+        <div class="oli__header">
+            <h3>Payment Summary</h3>
+        </div>
+<div class="oli__table">
+
+            <table>
+                <col style="width:30%"></col>
+                <col style="width:23%"></col>
+                <col style="width:23%"></col>
+                <col style="width:23%"></col>
+                <thead>
+                    <tr>
+                        <td>
+                            <strong>Payment Type</strong>
+                        </td>
+                        <td class="text-left">
+                            <strong>Date</strong>
+                        </td>
+                        <td class="text-center">
+                            <strong>GST</strong>
+                        </td>
+                        <td class="text-left">
+                            <strong>Amount</strong>
+                        </td>
+                    </tr>
+                    <br></br>
+                    <tr><td> Debit Card </td><td>31/12/2020</td><td>2% </td><td>$30000</td></tr>
+                    <tr><td> Debit Card </td><td>31/12/2020</td><td>1.5% </td><td>20000</td></tr>
+                </thead>
+                </table>
+</div></div><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+ <div class="oli__footer">
+            <table>
+                <col style="width:85%"></col>
+                <col style="width:15%"></col>
+                <tbody>
+                    <tr>
+                        <td class="thick-line text-center">
+                            <strong>Total Payments : $50000</strong>
+                        </td></tr>
+                     <tr>
+                        <td class="thick-line text-center">
+                            <strong>Balance Due : $0.00</strong>
+                        </td></tr>
+                    </tbody>
+                 </table>
+</div>
+<br></br><br></br><br></br><br></br>
+<h3>Shipping Charge : $150/-</h3><br></br>
+<div class="thick-line text-left">
+    <h3>Driver Assigned : Mr.Ron </h3>
+    </div>
+ 
+<br></br><br></br><br></br>
+<div class="thick-line text-right">
+            <h3>Shipped To: Roshan Andrews <br></br>432/9 ,Chilankal(HO) <br></br> Kunnathurmedu(PO) <br></br> Wayanad <br></br>
+             Pin: 690756 <br></br> Phone: 7890564321</h3>
+</div>
+
+</apex:page>
