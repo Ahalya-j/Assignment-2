@@ -1,0 +1,61 @@
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <h1 class="slds-text-heading_medium slds-m-bottom_medium">
+        ORDERED PRODUCT DETAILS </h1>
+        </div>
+        <div class="slds-p-around_medium lgc-bg"></div>
+
+    <div class="c-container">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+            
+                    <p class="field-title" title="Product Name">Product Name:</p>
+                    <br><p>SLA: Gold</p><br>
+                    <p>SLA: Bronze</p>
+                </div>
+            </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <div class="header-column">
+                    <p class="field-title" title="Quantity">Quantity:</p>
+                    <p><br>2</p><br>
+                    <p>3</p>
+                </div>
+                </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+        
+                    <p class="field-title" title="Unit Price">Unit Price:</p>
+                    <br><p>15000</p><br>
+                    <p>10000</p>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Total Price">Total Price:</p>
+                    <br><p>30000</p><br>
+                    <p>30000</p>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Ordered Date">Ordered Date:</p>
+                    <br><p>June 23,2020</p><br>
+                    <p>June 24,2020</p>
+                    
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+            DRIVER ASSIGNED FOR THE PRODUCTS !
+        </h2>
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tree items={items} header="Product"></lightning-tree>
+        </div>
+    </div>
+    
+</template>
