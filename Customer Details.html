@@ -1,58 +1,11 @@
 <template>
-        
-    <lightning-tabset>
-    <lightning-tab label="Customer 1">
-           <br> Aami jayaprakash <br><br> Phone :9085764269 
-        </lightning-tab>
-        <lightning-tab label="Pickup Address" title="2nd tab extended title">
-            <br> BlueDimond Courier Service <br> Kakkanad <br> Ernakulam <br> 
-            Pin: 678590 <br> Phone : 9087654321
-
-        </lightning-tab>
-        <lightning-tab label="Delivery Address">
-          <br>Hrithik  <br>432/9  <br> Thottungal(HO) <br> Kinasseri(PO) <br> Ernakulam <br>
-         Pin: 678964 <br> Phone: 9087654321 <br>Nearest Location : Plazza Mall
-        </lightning-tab>
-        <br>
-        <div class="slds-p-around_medium lgc-bg">
-            <lightning-button-menu alternative-text="Show menu">
-                <lightning-menu-subheader label="Customer orders"></lightning-menu-subheader>
-                <lightning-menu-item value="SLA: Gold" label="SLA: Gold"></lightning-menu-item>
-                <lightning-menu-item value="SLA: Silver" label="SLA: Silver"></lightning-menu-item>
-                
-            </lightning-button-menu>
-        </div>
-         <lightning-card>
-        <div class="slds-p-around_small">
-            <lightning-button variant="brand" 
-                    label="Get Current Location"
-                    onclick={handleClick}>
-                </lightning-button> <br/><br/>
-            <lightning-map map-markers={lstMarkers} zoom-level={zoomlevel} ></lightning-map>
-        </div>
-    </lightning-card>
-    </lightning-tabset>
-        <lightning-tabset>
-            <lightning-tab label="Customer 2">
-               <br> Arun prakash <br><br> Phone :9008764269
-            </lightning-tab>
-            <lightning-tab label="Pickup Address" title="2nd tab extended title">
-               <br> BlueBerry Courier Service <br> Kalamassery <br> Wayanad <br> 
-                Pin: 690632 <br> Phone : 8907645321
-    
-            </lightning-tab>
-            <lightning-tab label="Delivery Address">
-              <br>Roshan <br>432/9  <br> Chilankal(HO) <br> Kunnathurmedu(PO) <br> Wayanad <br>
-             Pin: 690756 <br> Phone: 7890564321
-            </lightning-tab>
-            <div class="slds-p-around_medium lgc-bg">
-                <lightning-button-menu alternative-text="Show menu">
-                    <lightning-menu-subheader label="Customer orders"></lightning-menu-subheader>
-                    <lightning-menu-item value="SLA: Bronze" label="SLA: Bronze"></lightning-menu-item>
-                    <lightning-menu-item value="SLA: Silver" label="SLA: Silver"></lightning-menu-item>
-                    
-                </lightning-button-menu>
-            </div>
-
-    </lightning-tabset>
+    <lightning-card>
+    <div class="slds-p-around_small">
+        <lightning-button variant="brand" 
+                label="Get Location"
+                onclick={handleClick}>
+            </lightning-button> <br/><br/>
+        <lightning-map map-markers={lstMarkers} zoom-level={zoomlevel} ></lightning-map>
+    </div>
+</lightning-card>
 </template>
