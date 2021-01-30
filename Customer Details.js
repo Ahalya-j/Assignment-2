@@ -1,6 +1,6 @@
 import { LightningElement } from 'lwc';
 
-export default class DeliveryManagement extends LightningElement {
+export default class CustomerDetails extends LightningElement {
     
         
         genericInputChange(event){
@@ -11,8 +11,6 @@ export default class DeliveryManagement extends LightningElement {
     zoomlevel = "1";
 
     handleClick(){
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
 
                 // Get the Latitude and Longitude from Geolocation API
                 var latitude = position.coords.latitude;
@@ -21,8 +19,9 @@ export default class DeliveryManagement extends LightningElement {
                 // Add Latitude and Longitude to the markers list.
                 this.lstMarkers = [{
                     location : {
-                        Latitude: latitude,
-                        Longitude : longitude
+                        Street: '80/2,Kayyara house , Nochupully post',
+                City: 'Palakkad',
+                State: 'Kerala',
                     },
                     title : 'You are here'
                 }];
