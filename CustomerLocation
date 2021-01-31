@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+    <div class="slds-p-around_small">
+        <lightning-button variant="brand" 
+                label="Get Location"
+                onclick={handleClick}>
+            </lightning-button> <br/><br/>
+        <lightning-map map-markers={lstMarkers} zoom-level={zoomlevel} ></lightning-map>
+    </div>
+</lightning-card>
+</template>
