@@ -1,11 +1,81 @@
 <template>
-    <lightning-card>
-    <div class="slds-p-around_small">
-        <lightning-button variant="brand" 
-                label="Get Location"
-                onclick={handleClick}>
-            </lightning-button> <br/><br/>
-        <lightning-map map-markers={lstMarkers} zoom-level={zoomlevel} ></lightning-map>
-    </div>
-</lightning-card>
+    <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+        <lightning-record-edit-form 
+        record-id="a032y00000116m3AAA"
+        object-api-name="Customer" 
+        onsubmit={handleSubmit}>
+        
+            <lightning-messages></lightning-messages>
+            <lightning-input-name
+            label="Delivery Address"
+            first-name=""
+            last-name=""
+            salutation="Mr."
+            options={salutationOptions} ></lightning-input-name>
+            <lightning-input-address
+                address-label="Billing Address"
+                street-label="Street"
+                city-label="City"
+                country-label="Country"
+                province-label="Province"
+                postal-code-label="PostalCode"
+                street="Default Street Line"
+                city=""
+                country=""
+                province=""
+                postal-code=""
+                required
+                field-level-help="Select Billing Address" 
+                show-address-lookup>
+            </lightning-input-address>
+            <lightning-input-address
+            address-label="Shipping Address"
+            street-label="Street"
+            city-label="City"
+            country-label="Country"
+            province-label="Province"
+            postal-code-label="PostalCode"
+            street="Default Street Line"
+            city=""
+            country=""
+            province=""
+            postal-code=""
+            required
+            field-level-help="Select Shipping Address" 
+            show-address-lookup>
+        </lightning-input-address>
+        <lightning-input-field field-name="Phone">
+            <lightning-input-field field-name="Email">
+        </lightning-input-field>
+        <br>
+        <strong> <lightning-button type="submit"
+                              name="Submit"
+                              label="Submit"
+                              class="slds-m-top_medium"
+                              >
+                </lightning-button></strong>
+        </br>
+        </lightning-record-edit-form>
+        </div>
+
+        <lightning-record-view-form
+        record-id="a032y00000116m3AAA"
+        object-api-name="Customer">
+        <div class="slds-grid">
+            
+              
+    <lightning-output-field field-name="Name">
+    </lightning-output-field>
+    
+    <lightning-output-field field-name="BillingAddress">
+    </lightning-output-field>
+ <lightning-output-field field-name="ShippingAddress">
+    </lightning-output-field>
+    <lightning-output-field field-name="Phone">
+    </lightning-output-field>
+    <lightning-output-field field-name="Email">
+    </lightning-output-field>
+</div>
+</lightning-record-view-form>
+    
 </template>
