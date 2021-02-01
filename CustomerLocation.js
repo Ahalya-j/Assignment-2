@@ -1,5 +1,7 @@
 import { LightningElement,wire ,api} from 'lwc';
-
+import FIELD_Location from '@salesforce/schema/Customer.Location__c';
+import FIELD_Latitude from '@salesforce/schema/Customerc.Location__Latitude__s';
+import FIELD_Longitude from '@salesforce/schema/Photo__c.Location__Longitude__s';
 export default class CustomerDetails extends LightningElement {
     
         @api recordId;
