@@ -4,47 +4,15 @@
         record-id="a032y00000116m3AAA"
         object-api-name="Customer" 
         onsubmit={handleSubmit}>
-        
+
             <lightning-messages></lightning-messages>
-            <lightning-input-name
-            label="Delivery Address"
-            first-name=""
-            last-name=""
-            salutation="Mr."
-            options={salutationOptions} ></lightning-input-name>
-            <lightning-input-address
-                address-label="Billing Address"
-                street-label="Street"
-                city-label="City"
-                country-label="Country"
-                province-label="Province"
-                postal-code-label="PostalCode"
-                street="Default Street Line"
-                city=""
-                country=""
-                province=""
-                postal-code=""
-                required
-                field-level-help="Select Billing Address" 
-                show-address-lookup>
-            </lightning-input-address>
-            <lightning-input-address
-            address-label="Shipping Address"
-            street-label="Street"
-            city-label="City"
-            country-label="Country"
-            province-label="Province"
-            postal-code-label="PostalCode"
-            street="Default Street Line"
-            city=""
-            country=""
-            province=""
-            postal-code=""
-            required
-            field-level-help="Select Shipping Address" 
-            show-address-lookup>
-        </lightning-input-address>
-        <lightning-input-field field-name="Phone">
+            <lightning-input-field field-name="Name">
+            </lightning-input-field>
+            <lightning-input-field field-name="Billing Address">
+            </lightning-input-field>
+            <lightning-input-field field-name="Shipping Address">
+            </lightning-input-field>
+        <lightning-input-input field-name="Phone">
             <lightning-input-field field-name="Email">
         </lightning-input-field>
         <br>
@@ -57,7 +25,7 @@
         </br>
         </lightning-record-edit-form>
         </div>
-
+          <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
         <lightning-record-view-form
         record-id="a032y00000116m3AAA"
         object-api-name="Customer">
