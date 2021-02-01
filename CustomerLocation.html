@@ -1,8 +1,8 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,wire ,api} from 'lwc';
 
 export default class CustomerDetails extends LightningElement {
     
-        
+        @api recordId;
         genericInputChange(event){
             console.log('Customer Details => ' , event.target.customerdetails);
             
@@ -18,11 +18,10 @@ export default class CustomerDetails extends LightningElement {
                 
                 // Add Latitude and Longitude to the markers list.
                 this.lstMarkers = [{
-                    location : {
-                        Street: '80/2,Kayyara house , Nochupully post',
-                City: 'Palakkad',
-                State: 'Kerala',
-                    },
+                    @wire(getRecord {
+                       recordId=a032y00000116m3AAA'
+                       fields: [ 'Customer.Location__Latitude__s', 'Customer.Location__Longitude__s' ]
+                    })
                     title : 'You are here'
                 }];
                 this.zoomlevel = "4";
