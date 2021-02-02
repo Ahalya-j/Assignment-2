@@ -1,5 +1,6 @@
-<apex:page showHeader="false" sidebar="false" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false"   >
-   <head>
+<apex:page showHeader="false" sidebar="false" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false" standardController="Opportunity" >
+
+    <head>
         <style>
             body {
                 font-family: sans-serif;
@@ -16,7 +17,7 @@
             }
             
             h1 {
-                font-size: 23px;
+                font-size: 18px;
             }
             
             h2 {
@@ -32,25 +33,49 @@
                 font-size: 12px;
             }
             
-           
-             .invoice__header {
+            .invoice__header {
                 display: inline-block;
                 width: 100%;
                 margin: 0px 0 10px 0;
             }
             
-            .invoice__logo {
-                width: 300px;
-            }
             
             .invoice__title {
                 float: left;
                 width: 80%;
             }
             
+            .invoice__number {
+                float: left;
+                width: 20%;
+                text-align: right;
+            }
+            
+            .invoice__number span {
+                display: block;
+            }
+            
+            .invoice__address {
+                width: 50%;
+                float: left;
+            }
             
             .invoice__address h3 {
                 margin-bottom: 5px;
+            }
+            
+            .invoice__address span {
+                display: block;
+            }
+            
+            .invoice__address--left {
+                text-align: left;
+                width: 60%;
+            }
+            
+            .invoice__address--right {
+                text-align: right;
+                width: 40%;
             }
             
             .invoice__memo,
@@ -78,7 +103,11 @@
                 border-color: #ddd;
             }
             
-           
+            .memo__content {
+                padding: 10px 15px;
+                min-height: 50px;
+            }
+            
             table {
                 padding: 10px 15px;
                 width: 100%;
@@ -106,92 +135,166 @@
                 float: left;
             }
             
-            .invoice__footer img {
-                width: 100%;
-            }
+           
         </style>
     </head>
-     <div class="thick-line text-right">
-         <h5>#000675</h5>
-         </div>
-    <div class="invoice__logo">
-            <apex:image url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHw3mZAR26BuMoh9DgJEvaqASk2tO1VDd92w&usqp=CAU" width="66" height="66" />
-        </div>
-    
-    <center> <h1> INVOICE FOR DELIVERY ! </h1></center>
-     
-   <br></br><br></br>
-    <div class="slds-m-top_medium slds-m-bottom_x-small">
-        <h2 class="slds-text-heading_small slds-m-bottom_small">
-        Product Summary </h2></div>
-    <table  cellpadding="17" cellspacing="17">
-       
-        <tr><td><strong>Product Name</strong></td><td><strong>Quantity</strong> </td><td><strong>Unit Prize</strong> </td><td><strong>Total Prize</strong> </td><td><strong>Discount </strong></td></tr>
-        <tr> <td>SLA: Gold</td><td>2 </td><td>15000 </td> <td>30000 </td><td>20% </td></tr>
-        <tr> <td>SLA: Bronze</td><td>3 </td><td>10000 </td> <td>20000 </td><td>15%</td></tr>  
+    <div class="invoice__header">
         
-      </table>
-<br></br><br></br>
-   
- <div class="invoice__oli">
+        <div class="invoice__title">
+           <center> <h1>INVOICE FOR DELIVERY!</h1></center>
+        </div>
+        <div class="invoice__number">
+            <h1>{!Opportunity.Invoice_Number__c}</h1>
+           		
+        </div>
+    </div>
+    
+    <div class="invoice__oli">
 
         <div class="oli__header">
-            <h3>Payment Summary</h3>
+            <h2>Invoice Summary</h2>
         </div>
-<div class="oli__table">
+        <div class="oli__table">
 
             <table>
-                <col style="width:30%"></col>
-                <col style="width:23%"></col>
-                <col style="width:23%"></col>
-                <col style="width:23%"></col>
+                <col style="width:40%"></col>
+                <col style="width:20%"></col>
+                <col style="width:20%"></col>
+                <col style="width:20%"></col>
                 <thead>
                     <tr>
                         <td>
-                            <strong>Payment Type</strong>
-                        </td>
-                        <td class="text-left">
-                            <strong>Date</strong>
+                            <strong>Item</strong>
                         </td>
                         <td class="text-center">
-                            <strong>GST</strong>
+                            <strong>Price</strong>
                         </td>
-                        <td class="text-left">
-                            <strong>Amount</strong>
+                        <td class="text-center">
+                            <strong>Quantity</strong>
+                        </td>
+                        <td class="text-right">
+                            <strong>Total</strong>
                         </td>
                     </tr>
-                    <br></br>
-                    <tr><td> Debit Card </td><td>31/12/2020</td><td>2% </td><td>$30000</td></tr>
-                    <tr><td> Debit Card </td><td>31/12/2020</td><td>1.5% </td><td>20000</td></tr>
                 </thead>
-                </table>
-</div></div><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
- <div class="oli__footer">
+                <tbody>
+                    <apex:outputPanel layout="none" rendered="{!AND(Opportunity.Type =='Donation',Opportunity.StageName =='Pledged')}">
+                        <tr>
+                            <td>{!Opportunity.Description}</td>
+                            <td class="text-center">${!Opportunity.Amount}</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">${!Opportunity.Amount}</td>
+                        </tr>
+                    </apex:outputPanel>
+                    <apex:repeat value="{!olis}" var="oli" id="theRepeater" rendered="{!NOT(AND(Opportunity.Type =='Donation',Opportunity.StageName =='Pledged'))}">
+                        <tr>
+                            <td>{!oli.Name}</td>
+                            <td class="text-center">${!oli.Unit_Price__c}</td>
+                            <td class="text-center">{!oli.Quantity__c}</td>
+                            <td class="text-right">${!oli.Price_Formula__c}</td>
+                        </tr>
+                    </apex:repeat>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="oli__footer">
             <table>
                 <col style="width:85%"></col>
                 <col style="width:15%"></col>
                 <tbody>
                     <tr>
-                        <td class="thick-line text-center">
-                            <strong>Total Payments : $50000</strong>
-                        </td></tr>
-                     <tr>
-                        <td class="thick-line text-center">
-                            <strong>Balance Due : $0.00</strong>
-                        </td></tr>
-                    </tbody>
-                 </table>
-</div>
-<br></br><br></br><br></br><br></br>
-<h3>Shipping Charge : $150/-</h3><br></br>
-<div class="thick-line text-left">
-    <h3>Driver Assigned : Mr.Ron </h3>
+                        <td class="thick-line text-right">
+                            <strong>Total</strong>
+                        </td>
+                        <td class="thick-line text-right">${!Opportunity.Amount}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
- 
-<br></br><br></br><br></br>
-<div class="thick-line text-right">
-            <h3>Shipped To: Roshan Andrews <br></br>432/9 ,Chilankal(HO) <br></br> Kunnathurmedu(PO) <br></br> Wayanad <br></br>
-             Pin: 690756 <br></br> Phone: 7890564321</h3>
-</div>
+    <div class="invoice__oli">
+        <div class="oli__header">
+            <h2>Payment Summary</h2>
+        </div>
+        <div class="payment__table">
+            <table>
+                <col style="width:40%"></col>
+                <col style="width:20%"></col>
+                <col style="width:20%"></col>
+                <col style="width:20%"></col>
+                <thead>
+                    <tr>
+                        <td>
+                            <strong>Payment Type</strong>
+                        </td>
+                        <td class="text-center">
+                            <strong>Date</strong>
+                        </td>
+                        <td class="text-center">
+                            <strong>Reference #</strong>
+                        </td>
+                        <td class="text-right">
+                            <strong>Amount</strong>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!payments}" var="payment" id="paymentrepeater">
+                        <tr>
+                            <td>{!payment.npe01__Payment_Method__c}</td>
+                            <td class="text-center">
+                                <apex:outputText value="{0,date, MM/dd/YYYY}">
+                                    <apex:param value="{!payment.npsp__Payment_Date__c}" />
+                                </apex:outputText>
+                            </td>
+                            <td class="text-center">{!payment.npsp__GST__c}</td>
+                            <td class="text-right">${!payment.npsp__Payment_Amount__c}</td>
+                        </tr>
+                    </apex:repeat>
 
+                </tbody>
+            </table>
+        </div>
+</div>
+        <div class="oli__footer">
+            <table>
+                <col style="width:85%"></col>
+                <col style="width:15%"></col>
+                <tbody>
+                    <tr>
+                        <td class="thick-line text-right">
+                            <strong>Total Payments</strong>
+                        </td>
+                        <td class="thick-line text-right">${!Opportunity.npsp__Payments_Made__c}</td>
+                    </tr>
+                    <tr>
+                        <td class="thick-line text-right">
+                            <strong>Balance Due</strong>
+                        </td>
+                        <td class="thick-line text-right">${!Opportunity.npsp__Amount_Outstanding__c}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+<div class="invoice__contact">
+        <div class="invoice__address invoice__address--left">
+            <h3>Billed To:</h3>
+            <span class="address__line">{!Opportunity.Account.Name}</span>
+            <span class="address__line">{!Opportunity.Account.npsp__Contact__r.FirstName} {!Opportunity.Account.npsp__Contact__r.LastName}</span>
+            <span class="address__line">{!Opportunity.Account.BillingStreet}</span>
+            <span class="address__line">{!Opportunity.Account.BillingCity}, {!Opportunity.Account.BillingState} {!Opportunity.Account.BillingPostalCode}</span>
+
+        </div>
+        <div class="invoice__address invoice__address--right">
+            <h3>Shipped To:</h3>
+            <span class="address__line">{!Opportunity.Account.Name}</span>
+            <span class="address__line">{!Opportunity.npsp__Primary_Contact__r.FirstName} {!Opportunity.npsp__Primary_Contact__r.LastName}</span>
+            <apex:outputPanel rendered="{!ISNULL(Opportunity.Account.ShippingStreet)}">
+                <span class="address__line">{!Opportunity.Account.ShippingStreet}</span>
+                <span class="address__line">{!Opportunity.Account.ShippingCity}, {!Opportunity.Account.ShippingState} {!Opportunity.Account.ShippingPostalCode}</span>
+            </apex:outputPanel>
+        </div>
+    </div>
 </apex:page>
