@@ -1,6 +1,6 @@
 import { LightningElement,api } from 'lwc';
 import PRODUCT_NAME_FIELD from '@salesforce/schema/Orders.ProductName';
-    import RPRODUCT_CODE_FIELD from '@salesforce/schema/Orders.ListPrice';
+    import LIST_PRICE_FIELD from '@salesforce/schema/Orders.ListPrice';
     import UNIT_PRICE_FIELD from '@salesforce/schema/Orders.UnitPrice';
     import TOTAL_PRICE_FIELD from '@salesforce/schema/Orders.TotalPrice';
     import DRIEVR_FIELD from '@salesforce/schema/Orders.Driver';
