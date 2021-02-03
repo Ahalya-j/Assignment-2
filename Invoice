@@ -164,16 +164,16 @@
                 <thead>
                     <tr>
                         <td>
-                            <strong>Item</strong>
+                            <strong>Product Name</strong>
                         </td>
                         <td class="text-center">
-                            <strong>Price</strong>
+                            <strong>Unit Price</strong>
                         </td>
                         <td class="text-center">
                             <strong>Quantity</strong>
                         </td>
                         <td class="text-right">
-                            <strong>Total</strong>
+                            <strong>Total Price</strong>
                         </td>
                     </tr>
                 </thead>
@@ -189,7 +189,7 @@
                     <apex:repeat value="{!olis}" var="oli" id="theRepeater" rendered="{!NOT(AND(Opportunity.Type =='Donation',Opportunity.StageName =='Pledged'))}">
                         <tr>
                             <td>{!oli.Name}</td>
-                            <td class="text-center">${!oli.Unit_Price__c}</td>
+                            <td class="text-center">${!oli.Price__c}</td>
                             <td class="text-center">{!oli.Quantity__c}</td>
                             <td class="text-right">${!oli.Price_Formula__c}</td>
                         </tr>
@@ -232,7 +232,7 @@
                             <strong>Date</strong>
                         </td>
                         <td class="text-center">
-                            <strong>Reference #</strong>
+                            <strong>GST</strong>
                         </td>
                         <td class="text-right">
                             <strong>Amount</strong>
@@ -264,13 +264,13 @@
                 <tbody>
                     <tr>
                         <td class="thick-line text-right">
-                            <strong>Total Payments</strong>
+                            <strong>Total Payments :</strong>
                         </td>
                         <td class="thick-line text-right">${!Opportunity.npsp__Payments_Made__c}</td>
                     </tr>
                     <tr>
                         <td class="thick-line text-right">
-                            <strong>Balance Due</strong>
+                            <strong>Balance Due :</strong>
                         </td>
                         <td class="thick-line text-right">${!Opportunity.npsp__Amount_Outstanding__c}</td>
                     </tr>
