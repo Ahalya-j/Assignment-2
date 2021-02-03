@@ -242,10 +242,10 @@
                 <tbody>
                     <apex:repeat value="{!payments}" var="payment" id="paymentrepeater">
                         <tr>
-                            <td>{!payment.npe01__Payment_Method__c}</td>
+                            <td>{!payment.npe01__Payment_Type__c}</td>
                             <td class="text-center">
                                 <apex:outputText value="{0,date, MM/dd/YYYY}">
-                                    <apex:param value="{!payment.npsp__Payment_Date__c}" />
+                                    <apex:param value="{!payment.npsp__Date__c}" />
                                 </apex:outputText>
                             </td>
                             <td class="text-center">{!payment.npsp__GST__c}</td>
